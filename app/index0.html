@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="StockAnalyzerApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>Stock Analyzer 2.0</title>
+        <!-- Bootstrap -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="styles/bootstrap-social.css" rel="stylesheet"> -->
+    <link href="styles/mystyles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- Feedback modal starts here -->
+    <div class="modal fade" id="feedbackModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                  Coming soon!
+                    <!-- <form class="form-horizontal" for="form">
+                        <div class="form-group">
+                            <label for="firstname" class="col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-10">
+                                <label class="radio-inline"><input type="radio"> 1</label>
+                                <label class="radio-inline"><input type="radio"> 2</label>
+                                <label class="radio-inline"><input type="radio"> 3</label>
+                                <label class="radio-inline"><input type="radio"> 4</label>
+                                <label class="radio-inline"><input type="radio"> 5</label>
+                                <label class="radio-inline"><input type="radio"> 6</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Section</label>
+                            <div class="col-sm-10">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-success active">
+                                        <input type="checkbox" checked autocomplete="off">Non-Smoking
+                                    </label>
+                                    <label class="btn btn-danger">
+                                        <input type="checkbox">Smoking
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-sm-2 control-label">Date and Time</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" name="date" id="date" type="textbox" placeholder="Date"><i class="glyphicon glyphicon-calendar form-control-feedback"></i></input>
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <input class="form-control" name="time" id="time" type="textbox" placeholder="Time"><i class="glyphicon glyphicon-time form-control-feedback"></i></input>
+                            </div>
+                            <div class="col-sm-3">
+                                <p style="padding:20px"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit">Reserve</button>
+                                <button class="btn btn-default" id="cancelReserveModal">Cancel</button>
+                            </div>
+                        </div>
+                    </form> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feedback modal ends here -->
+
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
+      <a class="navmenu-brand visible-md visible-lg" href="#">Stock Analyzer 2.0</a>
+      <ul class="nav navmenu-nav">
+        <li class="active"><a href="#" class="">Table</a></li>
+      </ul>
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Collapsible Group Item #1
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Stock Analyzer 2.0</a>
+    </div>
+
+    <div class="container-fluid" ng-controller="MenuController">
+
+      <div class="row row-content">
+
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+          <form class="form-horizontal" name="searchForm" ng-submit="">
+            <div class="form-group">
+              <div class="col-xs-8 col-sm-9 text-center">
+                <input type="text" class="form-control" name="searchTickers" placeholder="Start typing here ...">
+              </div>
+              <div class="col-xs-4 col-sm-3 text-center">
+                <button type="button" class="btn btn-info" name="name" value="">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="row row-content">
+        <div class="col-sm-3">
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../angular_ui/ui-bootstrap-tpls-1.1.2.min.js"></script>
+<script src="scripts/app.js"></script>
+
+</body>
+
+</html>

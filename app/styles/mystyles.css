@@ -1,0 +1,75 @@
+.row-header{
+	margin: 0px auto;
+	padding: 0px auto;
+}
+
+.row-content{
+	margin: 0px auto;
+	padding: 50px 0px 30px 0px;
+	border-bottom: 1px ridge;
+	min-height: 10px;
+}
+
+.row-footer{
+	/*background-color: white;*/
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+	background-color: #AfAfAf;
+	margin: 0px auto;
+	padding: 10px 0px 10px 0px;
+}
+
+
+body{
+	padding: 50px 0px 0px 0px;
+	z-index: 0;
+}
+
+/* adding for jsny bootstrap */
+
+.navmenu {
+  padding-top: 50px;
+}
+
+.navbar {
+  display: block;
+  text-align: center;
+}
+.navbar-brand {
+  display: inline-block;
+  float: none;
+}
+.navbar-toggle {
+  position: absolute;
+  float: left;
+  margin-left: 15px;
+}
+
+.container {
+  max-width: 100%;
+}
+
+@media (min-width: 1px) {
+  .navbar-toggle {
+    display: block !important;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0 0 0 300px;
+  }
+  .navmenu {
+    padding-top: 0;
+  }
+  .navbar {
+    display: none !important; /* IE8 fix */
+  }
+}
+/*jasny css ends*/
+
+/*for collapsable dropdown body color*/
+.panel-body {
+  background-color: #f5f5f5;
+}
