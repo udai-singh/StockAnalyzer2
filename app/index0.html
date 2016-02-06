@@ -88,28 +88,30 @@
     <!-- Feedback modal ends here -->
 
     <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
-      <a class="navmenu-brand visible-md visible-lg" href="#">Stock Analyzer 2.0</a>
+      <a class="navmenu-brand" href="#">Project name</a>
       <ul class="nav navmenu-nav">
-        <li class="active"><a href="#" class="">Table</a></li>
+        <li><a href="../navmenu/">Slide in</a></li>
+        <li class="active"><a href="./">Push</a></li>
+        <li><a href="../navmenu-reveal/">Reveal</a></li>
+        <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
       </ul>
-
-      <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Collapsible Group Item #1
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              ...
-            </div>
-          </div>
-        </div>
-      </div> -->
-
+      <ul class="nav navmenu-nav">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <div class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
@@ -118,20 +120,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Stock Analyzer 2.0</a>
+      <a class="navbar-brand" href="#">Project name</a>
     </div>
 
     <div class="container-fluid" ng-controller="MenuController">
 
       <div class="row row-content">
 
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2" style="border:1px solid">
           <form class="form-horizontal" name="searchForm" ng-submit="">
             <div class="form-group">
-              <div class="col-xs-8 col-sm-9 text-center">
+              <div class="col-xs-8 col-sm-9 text-center" style="border:1px solid">
                 <input type="text" class="form-control" name="searchTickers" placeholder="Start typing here ...">
               </div>
-              <div class="col-xs-4 col-sm-3 text-center">
+              <div class="col-xs-4 col-sm-3 text-center" style="border:1px solid">
                 <button type="button" class="btn btn-info" name="name" value="">Search</button>
               </div>
             </div>
