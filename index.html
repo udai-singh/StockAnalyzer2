@@ -9,11 +9,11 @@
          content must come *after* these tags -->
     <title>Stock Analyzer 2.0</title>
         <!-- Bootstrap -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/bootstrap-social.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="app/styles/mystyles.css" rel="stylesheet">
+    <link href="app/styles/dashboard.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +23,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body ng-controller="MenuController">
   <!-- Feedback modal starts here -->
     <div class="modal fade" id="feedbackModal" role="dialog">
         <div class="modal-dialog">
@@ -100,6 +100,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li class="visible-xs"><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
 
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Dropdown<span class="caret"></span></a>
@@ -128,55 +129,77 @@
 
         </div>
     </nav>
-    <div class="container" ng-controller="MenuController">
 
+    <div class="container-fluid">
       <div class="row row-content">
+        <div class="col-sm-3 col-md-2 sidebar">
 
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-          <form class="form-horizontal" name="searchForm" ng-submit="">
-            <div class="form-group">
-              <div class="col-xs-8 col-sm-9 text-center">
-                <input type="text" class="form-control" name="searchTickers" placeholder="Start typing here ...">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li class=""><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </a></li>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body checkbox">
+                <!-- <div class="checkbox"> -->
+                  <label class=""><input type="checkbox" ng-model="ratio_1"> PE Ratio</label>
+                <!-- </div> -->
               </div>
-              <div class="col-xs-4 col-sm-3 text-center">
-                <button type="button" class="btn btn-info" name="name" value="">Search</button>
+            </div>
+            <li><a href="#">Export</a></li>
+          </ul>
+
+          </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <form class="form-horizontal" name="searchForm" ng-submit="submit()">
+            <div class="form-group">
+              <div class="col-xs-8 col-sm-9 col-lg-6 col-lg-offset-2 text-center">
+                <input type="text" class="form-control" name="searchTickers" placeholder="Start typing here ..." ng-model="selected" uib-typeahead="ticker_name for ticker_name in ticker_names  | filter:$viewValue | limitTo:8">
+              </div>
+              <div class="col-xs-4 col-sm-3 col-lg-2 text-center">
+                <button type="submit" class="btn btn-info" name="name" value="">Search</button>
               </div>
             </div>
           </form>
-        </div>
+          <div class="row row-content">
 
-      </div>
-
-      <div class="row row-content">
-        <div class="col-sm-3">
-
+          </div>
+          <h2 class="sub-header">Section title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    <footer class="row-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <div class="nav navbar-nav" style="padding: 10px 10px;">
-                        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
-                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12">
-                    <p align=center>Thanks for visiting! - Udai Singh</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-<script type="text/javascript" src="scripts/app.js"></script>
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="angular_ui/ui-bootstrap-tpls-1.1.2.min.js"></script>
+<script src="app/scripts/app.js"></script>
 
 </body>
 
