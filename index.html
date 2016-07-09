@@ -156,7 +156,7 @@
           <form class="form-horizontal" name="searchForm" ng-submit="submit()">
             <div class="form-group">
               <div class="col-xs-8 col-sm-9 col-lg-6 col-lg-offset-2 text-center">
-                <input type="text" class="form-control" name="searchTickers" placeholder="Start typing here ..." ng-model="selected" uib-typeahead="ticker_name for ticker_name in ticker_names  | filter:$viewValue | limitTo:8">
+                <input type="text" class="form-control" placeholder="Start typing here ..." ng-model="selected" uib-typeahead="ticker_name for ticker_name in ticker_names  | filter:$viewValue | limitTo:8">
               </div>
               <div class="col-xs-4 col-sm-3 col-lg-2 text-center">
                 <button type="submit" class="btn btn-info" name="name" value="">Search</button>
@@ -164,16 +164,23 @@
             </div>
           </form>
           <div class="row row-content">
-            This page is currently in progress. To view a working model of this functionality, please visit - <a href="http://udai-singh.github.io/stock-analyzer/">this link</a>
+            <p style="color:red; text-align:center">
+              This page is currently in progress. To view a working model of this functionality, please visit - <a href="http://udai-singh.github.io/stock-analyzer/">this link</a>
+            </p>
           </div>
           <h2 class="sub-header">Section title</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
+                  
+                </tr>
+              </thead>
+              <!-- <thead>
+                <tr>
                   <th>#</th>
                   <th>Header</th>
-                  <th>Header</th>
+                  <th ng-hide="ratio_1">PE RATIO</th>
                   <th>Header</th>
                   <th>Header</th>
                 </tr>
@@ -182,11 +189,11 @@
                 <tr>
                   <td>1,001</td>
                   <td>Lorem</td>
-                  <td>ipsum</td>
+                  <td ng-hide="ratio_1">pe ratio</td>
                   <td>dolor</td>
                   <td>sit</td>
                 </tr>
-              </tbody>
+              </tbody> -->
             </table>
           </div>
         </div>
