@@ -12,6 +12,7 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
   //  log.error
 
     $scope.message = "Hello World!";
+    $scope.show_summary = false;
     $scope.selected = undefined;
     $scope.ticker_names = [];
 
@@ -22,6 +23,10 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
     var ticker_symbol;
 
     var last_trade_price;
+    var symbol;
+    var company;
+    var change;
+    var percent_change = [];
 
     $http.get('app/json/tickers.json').then(function(response){
 
@@ -31,6 +36,8 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
     });
 
     $scope.submit = function(){
+      //alert($scope.selected);
+      $scope.show_summary = true;
       if($scope.selected === '' || $scope.selected === undefined){
           alert("please enter value..");
           return;
@@ -51,16 +58,25 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
       var final_url = url + data + end ;
 
       $http.get(final_url).then(function(response){
-      //  console.log(response);
+        console.log(response);
         last_trade_price = response.data.query.results.quote.LastTradePriceOnly;
+        symbol = response.data.query.results.quote.Symbol;
+        company = response.data.query.results.quote.Name;
+        change = response.data.query.results.quote.Change_PercentChange;
+        percent_change = change.split(" ");
+
         $scope.result.unshift({
+          "Symbol" : symbol,
+          "Company" : company,
           "Ticker" : ticker_name,
-          "Last_Trade_Price" : last_trade_price
+          "Last_Trade_Price" : last_trade_price,
+          "Change" : percent_change[0],
+          "Percent_Change" : percent_change[2]
         });
         console.log($scope.result);
       }, function(error){
         alert("Error occurred");
-        console.log(error);
+    //    console.log(error);
       });
     };
 

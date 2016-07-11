@@ -131,8 +131,10 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row row-content">
-        <div class="col-sm-3 col-md-2 sidebar">
+      <div class="row">
+        <!--
+          **** ADD SCROLL SPY ?? *****
+          <div class="col-sm-3 col-md-2 sidebar">
 
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
@@ -142,17 +144,18 @@
             </a></li>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body checkbox">
-                <!-- <div class="checkbox"> -->
                   <label class=""><input type="checkbox" ng-model="ratio_1"> PE Ratio</label>
-                <!-- </div> -->
               </div>
             </div>
             <li><a href="#">Export</a></li>
           </ul>
 
-          </div>
+          </div> -->
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div class="col-xs-12 main">
+        <!--
+        USE this div if using sidebar ****
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
           <form class="form-horizontal" name="searchForm" ng-submit="submit()">
             <div class="form-group">
               <div class="col-xs-8 col-sm-9 col-lg-6 col-lg-offset-2 text-center">
@@ -164,38 +167,37 @@
             </div>
           </form>
           <div class="row row-content">
-            <p style="color:red; text-align:center">
+            <!-- <p style="color:red; text-align:center">
               This page is currently in progress. To view a working model of this functionality, please visit - <a href="http://udai-singh.github.io/stock-analyzer/">this link</a>
-            </p>
+            </p> -->
           </div>
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  
-                </tr>
-              </thead>
-              <!-- <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th ng-hide="ratio_1">PE RATIO</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td ng-hide="ratio_1">pe ratio</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-              </tbody> -->
-            </table>
-          </div>
+          <div ng-show=show_summary>
+            <h2 class="sub-header">Summary</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Ticker</th>
+                    <th>Company</th>
+                    <!-- <th ng-hide="ratio_1">PE RATIO</th> -->
+                    <th>Last Trade Price</th>
+                    <th>Change</th>
+                    <th>Percent Change</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="x in result">
+                    <td>{{x.Symbol}}</td>
+                    <td>{{x.Company}}</td>
+                    <!-- <td ng-hide="ratio_1">pe ratio</td> -->
+                    <td>{{x.Last_Trade_Price}}</td>
+                    <td>{{x.Change}}</td>
+                    <td>{{x.Percent_Change}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
         </div>
       </div>
     </div>
