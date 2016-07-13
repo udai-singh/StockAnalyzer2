@@ -18,6 +18,11 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
 
     $scope.result = [];
 
+    /* color of the rows */
+    $scope.color = "";
+
+
+
     var ticker;
     var ticker_name;
     var ticker_symbol;
@@ -79,5 +84,17 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
     //    console.log(error);
       });
     };
+
+    $scope.set_color = function (value) {
+      if(value.toString().indexOf('-') === -1){
+                return {
+                color: "green"
+                }
+              } else{
+                return {
+                color: "red"
+                }
+              }
+    }
 
   });
