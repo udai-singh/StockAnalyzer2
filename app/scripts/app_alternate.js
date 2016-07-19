@@ -63,22 +63,26 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
       var final_url = url + data + end ;
 
       $http.get(final_url).then(function(response){
-        // console.log(response);
-        last_trade_price = response.data.query.results.quote.LastTradePriceOnly;
-        symbol = response.data.query.results.quote.Symbol;
-        company = response.data.query.results.quote.Name;
-        change = response.data.query.results.quote.Change_PercentChange;
-        percent_change = change.split(" ");
+        console.log(response);
 
-        $scope.result.unshift({
-          "Symbol" : symbol,
-          "Company" : company,
-          "Ticker" : ticker_name,
-          "Last_Trade_Price" : last_trade_price,
-          "Change" : percent_change[0],
-          "Percent_Change" : percent_change[2]
-        });
-        // console.log($scope.result);
+        $scope.result = response;
+        console.log(result);
+
+        // last_trade_price = response.data.query.results.quote.LastTradePriceOnly;
+        // symbol = response.data.query.results.quote.Symbol;
+        // company = response.data.query.results.quote.Name;
+        // change = response.data.query.results.quote.Change_PercentChange;
+        // percent_change = change.split(" ");
+
+        // $scope.result.unshift({
+        //   "Symbol" : symbol,
+        //   "Company" : company,
+        //   "Ticker" : ticker_name,
+        //   "Last_Trade_Price" : last_trade_price,
+        //   "Change" : percent_change[0],
+        //   "Percent_Change" : percent_change[2]
+        // });
+        console.log($scope.result);
       }, function(error){
         alert("Error occurred");
     //    console.log(error);
@@ -86,7 +90,6 @@ var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
     };
 
     $scope.set_color = function (value) {
-
       if(value.toString().indexOf('-') === -1){
                 return {
                 color: "green"
