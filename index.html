@@ -186,7 +186,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="x in result">
+                  <tr dir-paginate="x in result | itemsPerPage:5">
+                  <!-- <tr ng-repeat="x in result"> -->
                     <!-- <td>{{x.query.results.quote.Symbol}}</td> -->
                     <td>{{x.Symbol}}</td>
                     <td>{{x.Company}}</td>
@@ -200,6 +201,13 @@
               {{color}}
 
             </div>
+            <div class="text-center">
+              <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true">
+              </dir-pagination-controls>
+            </div>
             </div>
         </div>
       </div>
@@ -210,6 +218,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
 <script src="angular_ui/ui-bootstrap-tpls-1.1.2.min.js"></script>
 <script src="app/scripts/app.js"></script>
 

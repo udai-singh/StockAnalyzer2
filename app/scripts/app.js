@@ -1,6 +1,6 @@
 'use strict';
 
-var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap']);
+var StockAnalyzerApp = angular.module('StockAnalyzerApp', ['ui.bootstrap', 'angularUtils.directives.dirPagination']);
 
   StockAnalyzerApp.controller('MenuController', function($scope, $http){
 
